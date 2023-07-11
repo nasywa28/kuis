@@ -37,7 +37,7 @@ class PostController extends Controller
      * @param  mixed $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         //validate form
         $this->validate($request, [
