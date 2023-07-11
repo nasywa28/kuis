@@ -15,7 +15,7 @@
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
-                        
+                            @csrf
                        
 
                             <div class="form-group">
@@ -58,6 +58,7 @@
                             <button type="reset" class="btn btn-md btn-warning">RESET</button>
 
                         </form> 
+                        
                     </div>
                 </div>
             </div>
