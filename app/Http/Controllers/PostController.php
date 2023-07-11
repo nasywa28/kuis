@@ -41,9 +41,9 @@ class PostController extends Controller
     {
         //validate form
         $this->validate($request, [
-            'title'     => 'required|min:5',
-            'deskripsi'   => 'required|min:10',
-            'status'   => 'required|min:10'
+            'title'     => 'required',
+            'deskripsi'   => 'required',
+            'status'   => 'required'
         ]);
 
        
