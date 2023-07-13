@@ -83,7 +83,7 @@ class PostController extends Controller
      * @param  mixed $id
      * @return RedirectResponse
      */
-    public function update(Request $request, $id): RedirectResponse
+    public function update(Request $request, $id)
     {
         //validate form
         $this->validate($request, [
@@ -95,34 +95,14 @@ class PostController extends Controller
         //get post by ID
         $post = Post::findOrFail($id);
 
-        // //check if image is uploaded
-        // if ($request->hasFile('image')) {
-
-        //     //upload new image
-        //     $image = $request->file('image');
-        //     $image->storeAs('public/posts', $image->hashName());
-
-        //     //delete old image
-        //     Post::update('public/posts/'.$post->image);
-
-            //update post with new image
+        
             $post->update([
                 'title'     => $request->title,
                 'deskripsi'   => $request->deskripsi,
                 'status' => $request->status
             ]);
 
-        // } else {
-
-        //     //update post without image
-        //     $post->update([
-        //         'title'     => $request->title,
-        //         'deskripsi'   => $request->deskripsi,
-        //         'status'   => $request->status
-        //     ]);
-        // }
-
-        //redirect to index
+        
         return redirect()->route('posts.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
 
