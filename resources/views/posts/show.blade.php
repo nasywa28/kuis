@@ -18,6 +18,8 @@
                         <h4>{{ $post->title }}</h4>
                         <p class="tmt-3">
                             {!! $post->deskripsi !!}
+                        </p>
+                        <p class="tmt-3">
                             {!! $post->status !!}
                         </p>
                     </div>
