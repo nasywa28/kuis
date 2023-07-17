@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
 
 return [
+    'providers' => [ 
+        Spatie\Permission\PermissionServiceProvider::class,
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -184,5 +187,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
+
+    
+       
 
 ];

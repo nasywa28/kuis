@@ -53,6 +53,7 @@
                                         </form>
                                     </td>
                                 </tr>
+                                
                               @empty
                                   <div class="alert alert-danger">
                                       Data Post belum Tersedia.
@@ -61,6 +62,9 @@
                             </tbody>
                           </table>  
                           {{ $posts->links() }}
+                          <a href="{{ route('admin.page') }}" class="btn btn-md btn-dark mb-3">Home</a>
+                          
+                            
                     </div>
                 </div>
             </div>
