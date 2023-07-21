@@ -20,9 +20,7 @@
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <a href="{{ route('posts.create') }}" class="btn btn-md btn-success mb-3">TAMBAH POST</a>
-                        <button type="submit" class="btn btn-sm btn-danger  mb-3">COMPLETED</button>
-                        <button type="submit" class="btn btn-sm btn-primary  mb-3">INCOMPLETED</button>
-                        <button type="submit" class="btn btn-sm btn-success  mb-3">SHOW ALL</button>
+        
                      @csrf
                         <table class="table table-bordered">
                             <thead>
@@ -45,12 +43,16 @@
                                     <td>{{ $post->status }}</td>
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                                        <a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-dark">SHOW</a>
-                                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                            @csrf
+                                        <a href="{{ route('posts.show', $post->id) }}" class="btn btn-outline-secondary">SHOW</a>
+                                          
+                                    <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-warning">EDIT</a>
+                                    @can('delete posts', Post::class)
+                                    @csrf
+                                            
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger">HAPUS</button>
+                                            <button type="submit" class="btn btn-outline-success">HAPUS</button>
                                         </form>
+                                        @endcan
                                     </td>
                                 </tr>
                                 
@@ -62,9 +64,8 @@
                             </tbody>
                           </table>  
                           {{ $posts->links() }}
-                          <a href="{{ route('admin.page') }}" class="btn btn-md btn-dark mb-3">Home</a>
-                          
-                            
+                          <a href="{{ route('home') }}" class="btn btn-md btn-dark mb-3">Home</a>
+                           
                     </div>
                 </div>
             </div>

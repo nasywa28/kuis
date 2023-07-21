@@ -128,39 +128,12 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with(['success' => 'Data Berhasil Dihapus!']);
     }
 
-    public function getCompletedTasks()
+    public function __construct()
     {
-        $completedTasks = Task::where('status', 'completed')->get();
-
-        return response()->json(['data' => $completedTasks]);
+        $this->middleware('permission:view posts', ['only' => ['index']]);
+        $this->middleware('permission:create posts', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit posts', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete posts', ['only' => ['destroy']]);
     }
-
-    public function getIncompleteTasks()
-    {
-        $incompleteTasks = Task::where('status', 'incomplete')->get();
-
-        return response()->json(['data' => $incompleteTasks]);
-    }
-
-    public function updateTaskStatus($id, Request $request)
-    {
-        $task = Task::find($id);
-
-        if (!$task) {
-            return response()->json(['message' => 'Task not found'], 404);
-        }
-
-        $status = $request->input('status');
-
-        if ($status !== 'completed' && $status !== 'incomplete') {
-            return response()->json(['message' => 'Invalid status'], 400);
-        }
-
-        $task->status = $status;
-        $task->save();
-
-        return response()->json(['message' => 'Task status updated successfully', 'data' => $task]);
-    }
-
 
 }

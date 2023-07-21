@@ -12,6 +12,8 @@
 </div>
 @endif
 Ini adalah halaman User
+<div> <a href="{{route('posts.index')}}" class="btn btn-primary">Dashboard</a>
+</div>
 </div>
 </div>
 </div>
