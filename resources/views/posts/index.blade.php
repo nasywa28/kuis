@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,7 @@
 </head>
 <body style="background: lightgray">
 
-    <div class="container mt-5">
+    <div class="container mt-2">
         <div class="row">
             <div class="col-md-12">
                 <div>
@@ -19,8 +21,9 @@
                 </div>
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
+                        @can('delete posts', Post::class)
                         <a href="{{ route('posts.create') }}" class="btn btn-md btn-success mb-3">TAMBAH POST</a>
-        
+                        @endcan
                      @csrf
                         <table class="table table-bordered">
                             <thead>
@@ -91,3 +94,4 @@
 
 </body>
 </html>
+@endsection
